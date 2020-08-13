@@ -1,0 +1,4 @@
+app:
+  botToken: ${BOT_TOKEN}
+  botName: ${BOT_NAME}
+  forecastApiKey: ${BOT_API_KEY}

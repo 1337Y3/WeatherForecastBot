@@ -17,11 +17,10 @@ data class Forecast(
                 По вашим координатам ($lat, $lon) текущее время ${getCurrentTime()},
                 температура ${current.temp}ºC, ощущается как ${current.feels_like}ºC, 
                 влажность ${current.humidity}%, давление ${current.pressure} мм. рт. с.,
-                ${current.weather.map { it.description }.joinToString(", ")},
-                
+                ${current.weather.map { it.description }.joinToString(", ")}
             """.trimIndent()
 
     private fun getCurrentTime(): String =
             Instant.ofEpochMilli(current.dt).atZone(ZoneId.of(timezone))
-                    .format(DateTimeFormatter.ISO_DATE_TIME)
+                    .format(DateTimeFormatter.ofPattern("hh:mm dd.MM.yyyy"))
 }

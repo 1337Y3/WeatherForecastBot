@@ -13,12 +13,11 @@ data class Forecast(
     val current: CurrentForecast
 ) {
     fun beautify(): String =
-            """
-                По вашим координатам ($lat, $lon) текущее время ${getCurrentTime()},
-                температура ${current.temp}ºC, ощущается как ${current.feels_like}ºC, 
-                влажность ${current.humidity}%, давление ${current.pressure} мм. рт. с.,
-                ${current.weather.map { it.description }.joinToString(", ")}
-            """.trimIndent()
+            "По вашим координатам ($lat, $lon) температура ${current.temp}ºC, " +
+            "ощущается как ${current.feels_like}ºC, " +
+            "влажность ${current.humidity}%, " +
+            "давление ${current.pressure} мм. рт. с., " +
+            current.weather.map { it.description }.joinToString(", ")
 
     private fun getCurrentTime(): String =
             Instant.ofEpochMilli(current.dt).atZone(ZoneId.of(timezone))
